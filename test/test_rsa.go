@@ -12,7 +12,7 @@ import (
 
 func main() {
 	//生成密钥对，保存到文件
-	tools.EncodeUtils.GenerateRSAKey(2048)
+	tools.EncodeUtils.GenerateRSAKey(2048, "./keypath/")
 	message := []byte("大萨#￥%……#￥%鬼地方个31AADA3123fsdf！@#！@")
 	fmt.Println("原始文字：", string(message))
 	//加密

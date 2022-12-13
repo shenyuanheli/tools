@@ -19,7 +19,14 @@ import (
 )
 
 //生成RSA私钥和公钥，保存到文件中
-func (r *Encryption) GenerateRSAKey(bits int) {
+func (r *Encryption) GenerateRSAKey(bits int, params ...string) {
+	saveDir := "./"
+	if len(params) > 0 {
+		saveDir = params[0]
+		if err := os.MkdirAll(saveDir, 0755); err != nil {
+			panic(err)
+		}
+	}
 	//GenerateKey函数使用随机数据生成器random生成一对具有指定字位数的RSA密钥
 	//Reader是一个全局、共享的密码用强随机数生成器
 	privateKey, err := rsa.GenerateKey(rand.Reader, bits)
@@ -31,7 +38,7 @@ func (r *Encryption) GenerateRSAKey(bits int) {
 	X509PrivateKey := x509.MarshalPKCS1PrivateKey(privateKey)
 	//使用pem格式对x509输出的内容进行编码
 	//创建文件保存私钥
-	privateFile, err := os.Create("private.pem")
+	privateFile, err := os.Create(saveDir + "private.pem")
 	if err != nil {
 		panic(err)
 	}
@@ -50,7 +57,7 @@ func (r *Encryption) GenerateRSAKey(bits int) {
 	}
 	//pem格式编码
 	//创建用于保存公钥的文件
-	publicFile, err := os.Create("public.pem")
+	publicFile, err := os.Create(saveDir + "public.pem")
 	if err != nil {
 		panic(err)
 	}
