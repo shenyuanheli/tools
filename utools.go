@@ -13,6 +13,7 @@ import (
 	"github.com/shenyuanheli/tools/idcard"
 	"github.com/shenyuanheli/tools/net"
 	"github.com/shenyuanheli/tools/str"
+	"github.com/shenyuanheli/tools/utils"
 )
 
 var (
@@ -24,4 +25,5 @@ var (
 	FileUtils       file.ZFile
 	EncryptionUtils encryption.Encryption
 	HttpUtils       net.Client
+	MyUtils         utils.UtilsLogic
 )
