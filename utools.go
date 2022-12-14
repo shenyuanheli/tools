@@ -14,6 +14,7 @@ import (
 	"github.com/shenyuanheli/tools/net"
 	"github.com/shenyuanheli/tools/str"
 	"github.com/shenyuanheli/tools/utils"
+	"github.com/shenyuanheli/tools/yaml"
 )
 
 var (
@@ -26,4 +27,5 @@ var (
 	EncryptionUtils encryption.Encryption
 	HttpUtils       net.Client
 	MyUtils         utils.UtilsLogic
+	YamlUtils       yaml.YamlUtils
 )
